@@ -333,7 +333,7 @@
         .top {
           backdrop-filter: none;
           -webkit-backdrop-filter: none;
-          background: color-mix(in srgb, var(--bg), transparent 10%);
+          background: var(--bg);
         }
 
         .card,
@@ -1131,12 +1131,6 @@
         [data-js="true"] .article-wrap,
         [data-js="true"] .photo:not(.break-photo),
         [data-js="true"] .side-card {
-          transition-duration: 400ms;
-          transition-delay: 0ms !important;
-        }
-
-        [data-js="true"] .article-wrap,
-        [data-js="true"] .article-wrap[data-visible="true"] {
           opacity: 1 !important;
           transform: none !important;
           transition: none !important;
@@ -1541,18 +1535,16 @@
       setHeaderHeight();
       window.addEventListener("resize", setHeaderHeight, { passive: true });
 
-      if (!prefersReduced && "IntersectionObserver" in window) {
-        const isMobile = window.innerWidth < 768;
+      const isMobile = window.innerWidth < 768;
+
+      if (!prefersReduced && !isMobile && "IntersectionObserver" in window) {
         const revealObserver = new IntersectionObserver(
           (entries) => {
             for (const entry of entries) {
               if (entry.isIntersecting) entry.target.dataset.visible = "true";
             }
           },
-          { 
-            rootMargin: isMobile ? "0px 0px 50px 0px" : "0px 0px -10% 0px", 
-            threshold: isMobile ? 0.01 : 0.12 
-          }
+          { rootMargin: "0px 0px -10% 0px", threshold: 0.12 }
         );
         for (const el of revealTargets) revealObserver.observe(el);
       } else {
