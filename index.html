@@ -81,6 +81,7 @@
         font-family: var(--font);
         color: var(--text);
         background: var(--bg);
+        padding-top: var(--header-h);
         line-height: 1.6;
         overflow-x: hidden;
         scroll-behavior: smooth;
@@ -128,8 +129,10 @@
       }
 
       .top {
-        position: sticky;
+        position: fixed;
         top: 0;
+        left: 0;
+        right: 0;
         z-index: 20;
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
@@ -220,9 +223,6 @@
           font-size: 13px;
           padding: 6px 8px;
         }
-        :root {
-          --header-h: auto;
-        }
       }
 
       nav a {
@@ -312,6 +312,28 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
+      }
+
+      @media (max-width: 768px) {
+        .top {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+          background: color-mix(in srgb, var(--bg), transparent 10%);
+        }
+
+        .card,
+        .item,
+        .case,
+        .formlike,
+        .article-wrap,
+        .side-card {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+
+        .card {
+          box-shadow: var(--shadow-soft);
+        }
       }
 
       .hero-main {
@@ -1097,6 +1119,11 @@
           transition-duration: 400ms;
           transition-delay: 0ms !important;
         }
+
+        [data-js="true"] .article-wrap,
+        [data-js="true"] .article-wrap[data-visible="true"] {
+          transform: none !important;
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -1476,12 +1503,22 @@
       document.getElementById("y").textContent = new Date().getFullYear();
 
       const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const header = document.querySelector(".top");
       const sections = [...document.querySelectorAll("main[id], section[id]")];
       const navLinks = [...document.querySelectorAll("nav a[href^='#']")];
       const inPageLinks = [...document.querySelectorAll("a[href^='#']")];
       const revealTargets = document.querySelectorAll(
         ".card, .item, .case, .formlike, .article-wrap, .photo:not(.break-photo), .side-card"
       );
+
+      const setHeaderHeight = () => {
+        if (!header) return;
+        const h = Math.max(0, Math.round(header.getBoundingClientRect().height));
+        if (h) document.documentElement.style.setProperty("--header-h", `${h}px`);
+      };
+
+      setHeaderHeight();
+      window.addEventListener("resize", setHeaderHeight, { passive: true });
 
       if (!prefersReduced && "IntersectionObserver" in window) {
         const isMobile = window.innerWidth < 768;
