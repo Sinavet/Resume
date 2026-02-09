@@ -147,17 +147,36 @@
       .brand {
         display: flex;
         align-items: center;
-        gap: 12px;
-        min-width: 220px;
-        padding: 10px 0;
+        gap: 14px;
+        min-width: 240px;
+        transition: opacity 180ms ease;
+      }
+
+      .brand:hover {
+        opacity: 0.85;
       }
 
       .badge {
-        width: 34px;
-        height: 34px;
+        width: 38px;
+        height: 38px;
         border-radius: 12px;
-        background: linear-gradient(140deg, var(--accent), var(--accent-2), var(--accent-3));
-        box-shadow: 0 16px 44px rgba(124, 92, 255, 0.26);
+        background: linear-gradient(140deg, var(--accent), var(--accent-2));
+        box-shadow: 0 8px 24px rgba(124, 92, 255, 0.25);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .badge::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transform: translateX(-100%);
+        transition: transform 600ms ease;
+      }
+
+      .brand:hover .badge::after {
+        transform: translateX(100%);
       }
 
       .brand strong {
@@ -240,19 +259,20 @@
       .hero-grid {
         display: grid;
         grid-template-columns: 1.15fr 0.85fr;
-        gap: 26px;
-        align-items: start;
+        gap: 24px;
+        align-items: stretch;
       }
 
       @media (min-width: 1200px) {
         .hero-grid {
-          gap: 30px;
+          gap: 32px;
         }
       }
 
       @media (max-width: 980px) {
         .hero-grid {
           grid-template-columns: 1fr;
+          align-items: start;
         }
       }
 
@@ -262,11 +282,14 @@
         border-radius: var(--radius-3);
         box-shadow: var(--shadow);
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
       }
 
       .hero-main {
         padding: var(--pad-lg);
         position: relative;
+        justify-content: center;
       }
 
       .hero-main::before {
@@ -304,62 +327,79 @@
       }
 
       h1 {
-        font-size: clamp(34px, 4vw, 52px);
-        line-height: 1.08;
-        margin: 16px 0 12px;
-        letter-spacing: -0.6px;
+        font-size: clamp(34px, 4.2vw, 54px);
+        line-height: 1.04;
+        margin: 12px 0 16px;
+        letter-spacing: -0.02em;
+        font-weight: 800;
       }
 
       .lead {
-        font-size: 17px;
+        font-size: 18px;
+        line-height: 1.55;
         color: var(--muted);
         margin: 0;
-        max-width: 62ch;
+        max-width: 58ch;
       }
 
       .hero-actions {
         display: flex;
-        gap: 12px;
+        gap: 16px;
         flex-wrap: wrap;
-        margin-top: 18px;
+        margin-top: 24px;
       }
 
       .meta {
-        display: flex;
-        gap: 14px;
-        flex-wrap: wrap;
-        margin-top: 20px;
-        padding-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 12px;
+        margin-top: 32px;
+        padding-top: 24px;
         border-top: 1px solid var(--border);
       }
 
       .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 12px;
-        border-radius: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel), transparent 40%);
+        border: 1px solid color-mix(in srgb, var(--border), transparent 10%);
+        transition: background 180ms ease, border-color 180ms ease;
+      }
+
+      .pill:hover {
         background: var(--panel);
-        border: 1px solid var(--border);
-        color: var(--muted);
-        font-size: 13px;
+        border-color: color-mix(in srgb, var(--border), white 8%);
       }
 
       .pill b {
         color: var(--text);
-        font-weight: 650;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        opacity: 0.6;
+      }
+
+      .pill span {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.4;
       }
 
       .hero-side {
-        display: grid;
-        grid-template-rows: auto auto;
-        align-content: start;
-        gap: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        height: 100%;
       }
 
       .photo {
         position: relative;
-        min-height: 260px;
+        flex: 1;
+        min-height: 280px;
         background-image: linear-gradient(135deg, rgba(124, 92, 255, 0.28), rgba(47, 228, 171, 0.12)),
           url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80");
         background-size: cover;
@@ -370,53 +410,82 @@
         box-shadow: var(--shadow-soft);
       }
 
+      @media (max-width: 980px) {
+        .photo {
+          min-height: 320px;
+          flex: none;
+        }
+      }
+
       .photo::after {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.62));
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.65));
       }
 
       .photo-caption {
         position: absolute;
-        left: 16px;
-        right: 16px;
-        bottom: 16px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
         z-index: 1;
         display: grid;
-        gap: 6px;
+        gap: 4px;
       }
 
       .photo-caption strong {
-        font-size: 14px;
+        font-size: 15px;
         letter-spacing: 0.2px;
+        color: white;
       }
 
       .photo-caption span {
         font-size: 13px;
-        color: rgba(255, 255, 255, 0.78);
+        color: rgba(255, 255, 255, 0.82);
       }
 
       .side-card {
-        padding: 18px;
+        padding: 24px;
         border-radius: var(--radius-3);
         border: 1px solid color-mix(in srgb, var(--border), transparent 10%);
         background: linear-gradient(180deg, color-mix(in srgb, var(--panel), white 2%), transparent);
         box-shadow: var(--shadow-soft);
+        flex: none;
       }
 
       .side-card h3 {
-        margin: 0 0 10px;
-        font-size: 15px;
+        margin: 0 0 16px;
+        font-size: 16px;
         letter-spacing: 0.2px;
       }
 
       .side-card ul {
         margin: 0;
-        padding-left: 18px;
-        color: var(--muted);
+        padding: 0;
+        list-style: none;
         display: grid;
-        gap: 8px;
+        gap: 12px;
+      }
+
+      .side-card li {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.4;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .side-card li::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        margin-top: 7px;
+        flex: none;
+        opacity: 0.7;
       }
 
       .break {
@@ -870,9 +939,9 @@
             </div>
 
             <div class="meta" aria-label="Ключевые факты">
-              <div class="pill"><b>Форматы</b> лендинг · блог · email · сценарии</div>
-              <div class="pill"><b>Сильные стороны</b> структура · UX‑тексты · tone of voice</div>
-              <div class="pill"><b>Подход</b> бриф → прототип → правки → публикация</div>
+              <div class="pill"><b>Форматы</b><span>лендинг · блог · email · сценарии</span></div>
+              <div class="pill"><b>Сильные стороны</b><span>структура · UX‑тексты · tone of voice</span></div>
+              <div class="pill"><b>Подход</b><span>бриф → прототип → правки → публикация</span></div>
             </div>
           </div>
 
