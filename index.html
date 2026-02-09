@@ -498,14 +498,29 @@
         position: relative;
         flex: 1;
         min-height: 280px;
-        background-image: linear-gradient(135deg, rgba(124, 92, 255, 0.28), rgba(47, 228, 171, 0.12)),
-          url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80");
-        background-size: cover;
-        background-position: center;
         border-radius: var(--radius-3);
         border: 1px solid color-mix(in srgb, var(--border), transparent 10%);
         overflow: hidden;
         box-shadow: var(--shadow-soft);
+        background: var(--bg-2);
+        isolation: isolate;
+      }
+
+      .photo-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+      }
+
+      .photo::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(124, 92, 255, 0.28), rgba(47, 228, 171, 0.12));
+        z-index: 1;
       }
 
       @media (max-width: 980px) {
@@ -521,6 +536,7 @@
         position: absolute;
         inset: 0;
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.65));
+        z-index: 1;
       }
 
       .photo-caption {
@@ -528,7 +544,7 @@
         left: 20px;
         right: 20px;
         bottom: 20px;
-        z-index: 1;
+        z-index: 2;
         display: grid;
         gap: 4px;
       }
@@ -595,8 +611,10 @@
 
       .break-photo {
         min-height: 220px;
-        background-image: linear-gradient(135deg, rgba(124, 92, 255, 0.18), rgba(47, 228, 171, 0.1)),
-          url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80");
+      }
+
+      .break-photo::before {
+        background: linear-gradient(135deg, rgba(124, 92, 255, 0.18), rgba(47, 228, 171, 0.1));
       }
 
       .break-photo::after {
@@ -858,6 +876,29 @@
         .article-cover {
           margin: 14px 0;
           border-radius: var(--radius-2);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .top {
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+        }
+        .section::before {
+          display: none;
+        }
+        .card,
+        .item,
+        .case,
+        .formlike,
+        .article-wrap,
+        .photo,
+        .side-card {
+          box-shadow: none;
+        }
+        .article-wrap {
+          content-visibility: auto;
+          contain-intrinsic-size: 1800px;
         }
       }
 
@@ -1197,12 +1238,25 @@
           </div>
 
           <div class="hero-side">
-            <div class="photo" role="img" aria-label="Рабочее место автора: ноутбук и блокнот" data-visible="true">
+            <figure class="photo" data-visible="true">
+              <img
+                class="photo-img"
+                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1200"
+                srcset="
+                  https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=720 720w,
+                  https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1200 1200w,
+                  https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1800 1800w
+                "
+                sizes="(max-width: 980px) 100vw, 40vw"
+                alt="Рабочее место автора: ноутбук и блокнот"
+                loading="eager"
+                decoding="async"
+              />
               <div class="photo-caption">
                 <strong>Копирайтинг для бизнеса</strong>
                 <span>Лендинги · статьи · email‑серии</span>
               </div>
-            </div>
+            </figure>
             <div class="side-card" data-visible="true">
               <h3>Темы, в которых я силён</h3>
               <ul>
@@ -1336,9 +1390,16 @@
 
           <div class="article-cover">
             <img
-              src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=2000&q=80"
+              src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=1200"
+              srcset="
+                https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=720 720w,
+                https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=1200 1200w,
+                https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=2000 2000w
+              "
+              sizes="(max-width: 640px) 100vw, 92ch"
               alt="Руки на клавиатуре и чашка кофе на столе"
               loading="lazy"
+              decoding="async"
             />
           </div>
 
@@ -1447,7 +1508,21 @@
 
     <section class="break" aria-hidden="true">
       <div class="container">
-        <div class="photo break-photo"></div>
+        <div class="photo break-photo">
+          <img
+            class="photo-img"
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200"
+            srcset="
+              https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=720 720w,
+              https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200 1200w,
+              https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=2000 2000w
+            "
+            sizes="100vw"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
       </div>
     </section>
 
