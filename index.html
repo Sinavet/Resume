@@ -205,23 +205,38 @@
 
       @media (max-width: 640px) {
         .top-inner {
-          flex-direction: column;
-          padding: 16px 0;
-          gap: 12px;
+          flex-direction: row;
+          padding: 10px 0;
+          gap: 10px;
         }
         .brand {
           min-width: 0;
-          width: 100%;
-          justify-content: center;
+          width: auto;
+          justify-content: flex-start;
+        }
+        .brand > span > span {
+          display: none;
         }
         nav {
-          width: 100%;
-          justify-content: center;
-          gap: 4px;
+          width: auto;
+          justify-content: flex-end;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          gap: 6px;
+        }
+        nav::-webkit-scrollbar {
+          display: none;
         }
         nav a {
-          font-size: 13px;
+          font-size: 12px;
           padding: 6px 8px;
+          white-space: nowrap;
+          flex: none;
+        }
+        nav a.btn {
+          padding: 8px 10px;
+          font-size: 12px;
         }
       }
 
@@ -1122,7 +1137,9 @@
 
         [data-js="true"] .article-wrap,
         [data-js="true"] .article-wrap[data-visible="true"] {
+          opacity: 1 !important;
           transform: none !important;
+          transition: none !important;
         }
       }
 
@@ -1504,6 +1521,7 @@
 
       const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const header = document.querySelector(".top");
+      let headerHeight = 0;
       const sections = [...document.querySelectorAll("main[id], section[id]")];
       const navLinks = [...document.querySelectorAll("nav a[href^='#']")];
       const inPageLinks = [...document.querySelectorAll("a[href^='#']")];
@@ -1514,7 +1532,10 @@
       const setHeaderHeight = () => {
         if (!header) return;
         const h = Math.max(0, Math.round(header.getBoundingClientRect().height));
-        if (h) document.documentElement.style.setProperty("--header-h", `${h}px`);
+        if (h) {
+          headerHeight = h;
+          document.documentElement.style.setProperty("--header-h", `${h}px`);
+        }
       };
 
       setHeaderHeight();
@@ -1562,7 +1583,7 @@
       }
 
       const setCurrent = () => {
-        const y = window.scrollY + parseInt(getComputedStyle(document.documentElement).getPropertyValue("--header-h") || "68", 10) + 20;
+        const y = window.scrollY + (headerHeight || 68) + 20;
         let currentId = sections[0]?.id;
         for (const s of sections) {
           if (s.offsetTop <= y) currentId = s.id;
