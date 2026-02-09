@@ -26,19 +26,19 @@
 
     <style>
       :root {
-        --bg: #070a12;
-        --bg-2: #0b1022;
-        --panel: rgba(255, 255, 255, 0.06);
-        --panel-2: rgba(255, 255, 255, 0.1);
-        --text: rgba(255, 255, 255, 0.92);
-        --muted: rgba(255, 255, 255, 0.72);
-        --soft: rgba(255, 255, 255, 0.14);
-        --border: rgba(255, 255, 255, 0.14);
-        --shadow: 0 24px 90px rgba(0, 0, 0, 0.6);
-        --shadow-soft: 0 14px 40px rgba(0, 0, 0, 0.35);
-        --accent: #7c5cff;
-        --accent-2: #2fe4ab;
-        --accent-3: #ffcc66;
+        --bg: #0b0e14;
+        --bg-2: #0e121b;
+        --panel: rgba(255, 255, 255, 0.03);
+        --panel-2: rgba(255, 255, 255, 0.05);
+        --text: rgba(255, 255, 255, 0.94);
+        --muted: rgba(255, 255, 255, 0.55);
+        --soft: rgba(255, 255, 255, 0.08);
+        --border: rgba(255, 255, 255, 0.08);
+        --shadow: 0 32px 80px rgba(0, 0, 0, 0.5);
+        --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.3);
+        --accent: #8b73ff;
+        --accent-2: #3ee9b7;
+        --accent-3: #ffd68a;
         --radius: 18px;
         --radius-2: 26px;
         --radius-3: 34px;
@@ -54,16 +54,16 @@
 
       @media (prefers-color-scheme: light) {
         :root {
-          --bg: #f7f8fc;
-          --bg-2: #eef1fb;
-          --panel: rgba(0, 0, 0, 0.04);
-          --panel-2: rgba(0, 0, 0, 0.06);
-          --text: rgba(6, 10, 20, 0.92);
-          --muted: rgba(6, 10, 20, 0.68);
-          --soft: rgba(6, 10, 20, 0.14);
-          --border: rgba(6, 10, 20, 0.14);
-          --shadow: 0 24px 70px rgba(15, 22, 40, 0.14);
-          --shadow-soft: 0 12px 30px rgba(15, 22, 40, 0.1);
+          --bg: #fcfcfd;
+          --bg-2: #f5f7fa;
+          --panel: rgba(0, 0, 0, 0.02);
+          --panel-2: rgba(0, 0, 0, 0.04);
+          --text: #1a1d23;
+          --muted: #5e6675;
+          --soft: rgba(0, 0, 0, 0.06);
+          --border: rgba(0, 0, 0, 0.08);
+          --shadow: 0 24px 60px rgba(0, 0, 0, 0.05);
+          --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.04);
         }
       }
 
@@ -80,10 +80,7 @@
         margin: 0;
         font-family: var(--font);
         color: var(--text);
-        background: radial-gradient(1300px 900px at 10% -10%, rgba(124, 92, 255, 0.3), transparent 60%),
-          radial-gradient(1100px 800px at 105% 0%, rgba(47, 228, 171, 0.18), transparent 60%),
-          radial-gradient(900px 700px at 50% 120%, rgba(255, 204, 102, 0.13), transparent 60%),
-          linear-gradient(180deg, var(--bg), var(--bg-2));
+        background: var(--bg);
         line-height: 1.6;
         overflow-x: hidden;
         scroll-behavior: smooth;
@@ -94,17 +91,27 @@
         text-decoration: none;
       }
 
-      a:focus-visible,
-      button:focus-visible {
-        outline: 2px solid color-mix(in srgb, var(--accent), white 22%);
+      a:focus-visible {
+        outline: 2px solid color-mix(in srgb, var(--accent), white 12%);
         outline-offset: 3px;
-        border-radius: 10px;
+        border-radius: 12px;
       }
 
       .container {
         max-width: var(--max);
         margin: 0 auto;
-        padding: 0 var(--pad);
+        padding: 0 20px;
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          padding: 0 16px;
+        }
+      }
+
+      main[id],
+      section[id] {
+        scroll-margin-top: calc(var(--header-h) + 18px);
       }
 
       .bg {
@@ -112,28 +119,22 @@
         inset: 0;
         pointer-events: none;
         z-index: -1;
-        opacity: 0.8;
-        background-image: radial-gradient(600px 400px at 15% 10%, rgba(124, 92, 255, 0.22), transparent 65%),
-          radial-gradient(520px 360px at 75% 12%, rgba(47, 228, 171, 0.14), transparent 62%),
-          radial-gradient(700px 420px at 60% 85%, rgba(255, 204, 102, 0.11), transparent 64%),
-          linear-gradient(to bottom, rgba(255, 255, 255, 0.06), transparent 32%),
-          repeating-linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.06) 0,
-            rgba(255, 255, 255, 0.06) 1px,
-            transparent 1px,
-            transparent 120px
-          );
-        mask-image: radial-gradient(80% 60% at 50% 0%, black 0%, transparent 70%);
+        background: transparent;
+        opacity: 0;
+      }
+
+      .bg::before {
+        content: none;
       }
 
       .top {
         position: sticky;
         top: 0;
         z-index: 20;
-        backdrop-filter: blur(14px);
-        background: color-mix(in srgb, var(--bg), transparent 35%);
-        border-bottom: 1px solid color-mix(in srgb, var(--border), transparent 20%);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        background: color-mix(in srgb, var(--bg), transparent 25%);
+        border-bottom: 1px solid var(--border);
       }
 
       .top-inner {
@@ -161,7 +162,7 @@
         height: 38px;
         border-radius: 12px;
         background: linear-gradient(140deg, var(--accent), var(--accent-2));
-        box-shadow: 0 8px 24px rgba(124, 92, 255, 0.25);
+        box-shadow: 0 8px 24px rgba(124, 92, 255, 0.15);
         position: relative;
         overflow: hidden;
       }
@@ -278,7 +279,7 @@
       }
 
       .hero {
-        padding: 54px 0 22px;
+        padding: clamp(44px, 5.5vw, 72px) 0 26px;
       }
 
       .hero-grid {
@@ -303,7 +304,9 @@
 
       .card {
         border: 1px solid var(--border);
-        background: linear-gradient(180deg, color-mix(in srgb, var(--panel), white 2%), transparent);
+        background: var(--panel);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
         border-radius: var(--radius-3);
         box-shadow: var(--shadow);
         overflow: hidden;
@@ -340,9 +343,9 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: radial-gradient(700px 420px at 14% 8%, rgba(124, 92, 255, 0.2), transparent 55%),
-          radial-gradient(620px 460px at 90% 20%, rgba(47, 228, 171, 0.12), transparent 58%);
-        opacity: 0.9;
+        background: radial-gradient(circle at 10% 10%, color-mix(in srgb, var(--accent), transparent 90%), transparent 60%),
+          radial-gradient(circle at 90% 20%, color-mix(in srgb, var(--accent-2), transparent 92%), transparent 60%);
+        opacity: 0.6;
         pointer-events: none;
       }
 
@@ -467,8 +470,9 @@
 
       @media (max-width: 980px) {
         .photo {
-          min-height: 320px;
+          min-height: 220px;
           flex: none;
+          display: block !important;
         }
       }
 
@@ -503,8 +507,10 @@
       .side-card {
         padding: 24px;
         border-radius: var(--radius-3);
-        border: 1px solid color-mix(in srgb, var(--border), transparent 10%);
-        background: linear-gradient(180deg, color-mix(in srgb, var(--panel), white 2%), transparent);
+        border: 1px solid var(--border);
+        background: var(--panel);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
         box-shadow: var(--shadow-soft);
         flex: none;
       }
@@ -557,8 +563,39 @@
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.48));
       }
 
-      section {
-        padding: 44px 0;
+      .section {
+        padding: clamp(42px, 5vw, 72px) 0;
+        position: relative;
+      }
+
+      .section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          color-mix(in srgb, var(--panel), transparent 35%),
+          transparent 36%,
+          transparent 64%,
+          color-mix(in srgb, var(--panel), transparent 35%)
+        );
+        opacity: 0.65;
+        pointer-events: none;
+      }
+
+      .section.section-alt::before {
+        background: linear-gradient(
+          180deg,
+          color-mix(in srgb, var(--panel-2), transparent 38%),
+          transparent 36%,
+          transparent 64%,
+          color-mix(in srgb, var(--panel-2), transparent 38%)
+        );
+        opacity: 0.7;
+      }
+
+      .section > .container {
+        position: relative;
       }
 
       .section-head {
@@ -607,8 +644,10 @@
       .item {
         padding: 18px;
         border-radius: var(--radius-2);
-        border: 1px solid color-mix(in srgb, var(--border), transparent 10%);
-        background: linear-gradient(180deg, color-mix(in srgb, var(--panel), white 2%), transparent);
+        border: 1px solid var(--border);
+        background: var(--panel);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
         box-shadow: var(--shadow-soft);
         transform: translateY(0);
         transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
@@ -656,8 +695,10 @@
       .case {
         padding: 18px;
         border-radius: var(--radius-2);
-        border: 1px solid color-mix(in srgb, var(--border), transparent 10%);
-        background: linear-gradient(180deg, color-mix(in srgb, var(--panel), white 2%), transparent);
+        border: 1px solid var(--border);
+        background: var(--panel);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
         box-shadow: var(--shadow-soft);
         position: relative;
         overflow: hidden;
@@ -669,12 +710,11 @@
         position: absolute;
         inset: -40px -40px auto -40px;
         height: 180px;
-        background: radial-gradient(240px 140px at 20% 30%, rgba(124, 92, 255, 0.22), transparent 60%),
-          radial-gradient(240px 140px at 70% 20%, rgba(47, 228, 171, 0.16), transparent 62%),
-          radial-gradient(300px 180px at 55% 60%, rgba(255, 204, 102, 0.12), transparent 62%);
+        background: radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--accent), transparent 90%), transparent 60%),
+          radial-gradient(circle at 70% 20%, color-mix(in srgb, var(--accent-2), transparent 92%), transparent 60%);
         filter: blur(0px);
         pointer-events: none;
-        opacity: 0.9;
+        opacity: 0.6;
       }
 
       .case > * {
@@ -754,8 +794,10 @@
       .article-wrap {
         padding: 22px;
         border-radius: var(--radius-3);
-        border: 1px solid color-mix(in srgb, var(--border), transparent 10%);
-        background: linear-gradient(180deg, color-mix(in srgb, var(--panel), white 2%), transparent);
+        border: 1px solid var(--border);
+        background: var(--panel);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
         display: grid;
         justify-items: center;
         box-shadow: var(--shadow-soft);
@@ -788,6 +830,15 @@
         display: grid;
         gap: 10px;
         margin-bottom: 18px;
+      }
+
+      .article-title {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .article-intro {
+        margin: 0;
       }
 
       .article-head .row {
@@ -893,8 +944,10 @@
       .formlike {
         padding: 20px;
         border-radius: var(--radius-3);
-        border: 1px solid color-mix(in srgb, var(--border), transparent 10%);
-        background: linear-gradient(180deg, color-mix(in srgb, var(--panel), white 2%), transparent);
+        border: 1px solid var(--border);
+        background: var(--panel);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
         box-shadow: var(--shadow-soft);
       }
 
@@ -930,8 +983,8 @@
         gap: 12px;
         padding: 12px 14px;
         border-radius: 14px;
-        border: 1px solid color-mix(in srgb, var(--border), transparent 10%);
-        background: color-mix(in srgb, var(--panel), transparent 6%);
+        border: 1px solid var(--border);
+        background: var(--panel);
         color: var(--muted);
         transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
       }
@@ -946,6 +999,40 @@
       .link b {
         color: var(--text);
         font-weight: 650;
+      }
+
+      .contact-card {
+        padding: var(--pad-lg);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .contact-card::before {
+        display: none;
+      }
+
+      .contact-title {
+        margin: 14px 0 10px;
+        font-size: 18px;
+      }
+
+      .contact-sub {
+        margin: 0;
+      }
+
+      .contact-callout {
+        margin-top: 14px;
+      }
+
+      .contact-actions {
+        margin-top: 14px;
+      }
+
+      .brief-list {
+        margin: 0 0 14px;
+        padding-left: 20px;
+        color: var(--muted);
+        display: grid;
+        gap: 8px;
       }
 
       .footer {
@@ -981,7 +1068,7 @@
       [data-js="true"] .case,
       [data-js="true"] .formlike,
       [data-js="true"] .article-wrap,
-      [data-js="true"] .photo,
+      [data-js="true"] .photo:not(.break-photo),
       [data-js="true"] .side-card {
         opacity: 0;
         transform: translateY(10px);
@@ -993,10 +1080,23 @@
       [data-js="true"] .case[data-visible="true"],
       [data-js="true"] .formlike[data-visible="true"],
       [data-js="true"] .article-wrap[data-visible="true"],
-      [data-js="true"] .photo[data-visible="true"],
+      [data-js="true"] .photo:not(.break-photo)[data-visible="true"],
       [data-js="true"] .side-card[data-visible="true"] {
         opacity: 1;
         transform: translateY(0);
+      }
+
+      @media (max-width: 768px) {
+        [data-js="true"] .card,
+        [data-js="true"] .item,
+        [data-js="true"] .case,
+        [data-js="true"] .formlike,
+        [data-js="true"] .article-wrap,
+        [data-js="true"] .photo:not(.break-photo),
+        [data-js="true"] .side-card {
+          transition-duration: 400ms;
+          transition-delay: 0ms !important;
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -1077,7 +1177,7 @@
       </div>
     </main>
 
-    <section id="services">
+    <section id="services" class="section">
       <div class="container">
         <div class="section-head">
           <div>
@@ -1106,7 +1206,7 @@
       </div>
     </section>
 
-    <section id="cases">
+    <section id="cases" class="section section-alt">
       <div class="container">
         <div class="section-head">
           <div>
@@ -1165,7 +1265,7 @@
       </div>
     </section>
 
-    <section id="article">
+    <section id="article" class="section">
       <div class="container">
         <div class="section-head">
           <div>
@@ -1185,8 +1285,8 @@
               <span class="chip">Формат: гайд</span>
               <span class="chip">Подходит: услуги · IT · онлайн‑продукты</span>
             </div>
-            <h3 style="margin: 0; font-size: 20px">Как написать лендинг, который не звучит как реклама</h3>
-            <p class="sub" style="margin: 0">
+            <h3 class="article-title">Как написать лендинг, который не звучит как реклама</h3>
+            <p class="sub article-intro">
               Люди не читают лендинг, чтобы «вдохновиться брендом». Они хотят быстро понять: что это, кому подходит, чем
               лучше альтернатив и что делать дальше. В этом гайде — методика, которая превращает «красивые слова» в
               понятное решение.
@@ -1310,7 +1410,7 @@
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="section section-alt">
       <div class="container">
         <div class="section-head">
           <div>
@@ -1328,7 +1428,7 @@
             <p class="small">Лучший канал — Telegram. Отвечаю в удобное время и быстро уточняю детали.</p>
             <div id="brief" hidden>
               <p class="small">Скопируйте и заполните 5 пунктов — этого обычно хватает, чтобы начать без лишних созвонов:</p>
-              <ul style="margin: 0 0 14px; padding-left: 20px; color: var(--muted); display: grid; gap: 8px">
+              <ul class="brief-list">
                 <li><b>Что за продукт/услуга:</b> 1–2 предложения.</li>
                 <li><b>Цель:</b> заявки / покупки / подписки / регистрация / другое.</li>
                 <li><b>Аудитория:</b> кто покупает и почему сейчас.</li>
@@ -1342,19 +1442,19 @@
             </div>
           </div>
 
-          <div class="card hero-main" style="box-shadow: none">
+          <div class="card contact-card">
             <div class="kicker"><span class="dot" aria-hidden="true"></span>Минимум вопросов</div>
-            <h3 style="margin: 14px 0 10px; font-size: 18px">Как я веду задачу</h3>
-            <p class="sub" style="margin: 0">
+            <h3 class="contact-title">Как я веду задачу</h3>
+            <p class="sub contact-sub">
               Сначала делаю структуру и смысл (прототип/план), затем пишу текст, после — правки и финальная версия под
               публикацию. Так вы видите прогресс и не тратите время на «рассказы о себе».
             </p>
-            <div class="callout" style="margin-top: 14px">
+            <div class="callout contact-callout">
               <b>Частый вопрос: «а какой у вас опыт?»</b>
               Отвечаю делом: начинаем с небольшого фрагмента (первый экран/план статьи). Если подход подходит — расширяем
               до полного объема.
             </div>
-            <div class="hero-actions" style="margin-top: 14px">
+            <div class="hero-actions contact-actions">
               <a class="btn btn-primary" href="https://t.me/Avannee" target="_blank" rel="noreferrer">Написать в Telegram</a>
               <a class="btn" href="mailto:zerefdparhnjl@gmail.com">Написать на Email</a>
             </div>
@@ -1378,20 +1478,50 @@
       const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const sections = [...document.querySelectorAll("main[id], section[id]")];
       const navLinks = [...document.querySelectorAll("nav a[href^='#']")];
-      const revealTargets = document.querySelectorAll(".card, .item, .case, .formlike, .article-wrap, .photo, .side-card");
+      const inPageLinks = [...document.querySelectorAll("a[href^='#']")];
+      const revealTargets = document.querySelectorAll(
+        ".card, .item, .case, .formlike, .article-wrap, .photo:not(.break-photo), .side-card"
+      );
 
       if (!prefersReduced && "IntersectionObserver" in window) {
+        const isMobile = window.innerWidth < 768;
         const revealObserver = new IntersectionObserver(
           (entries) => {
             for (const entry of entries) {
               if (entry.isIntersecting) entry.target.dataset.visible = "true";
             }
           },
-          { rootMargin: "0px 0px -10% 0px", threshold: 0.12 }
+          { 
+            rootMargin: isMobile ? "0px 0px 50px 0px" : "0px 0px -10% 0px", 
+            threshold: isMobile ? 0.01 : 0.12 
+          }
         );
         for (const el of revealTargets) revealObserver.observe(el);
       } else {
         for (const el of revealTargets) el.dataset.visible = "true";
+      }
+
+      const scrollToHash = (hash) => {
+        const id = (hash || "").replace(/^#/, "");
+        if (!id) return;
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        const behavior = prefersReduced ? "auto" : "smooth";
+        target.scrollIntoView({ behavior, block: "start" });
+      };
+
+      for (const a of inPageLinks) {
+        a.addEventListener("click", (e) => {
+          const href = a.getAttribute("href") || "";
+          if (!href.startsWith("#")) return;
+          const id = href.slice(1);
+          if (!id) return;
+          if (prefersReduced) return;
+          e.preventDefault();
+          history.pushState(null, "", href);
+          scrollToHash(href);
+        });
       }
 
       const setCurrent = () => {
@@ -1409,6 +1539,7 @@
 
       setCurrent();
       window.addEventListener("scroll", () => requestAnimationFrame(setCurrent), { passive: true });
+      window.addEventListener("hashchange", () => scrollToHash(location.hash));
     </script>
   </body>
 </html>
