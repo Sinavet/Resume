@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+
+    <title>Портфолио копирайтера — Щепин Михаил</title>
+    <meta
+      name="description"
+      content="Портфолио копирайтера: услуги, кейсы, профессиональная статья, контакты. Тексты для бизнеса: лендинги, статьи, email, tone of voice."
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content="Портфолио копирайтера — Щепин Михаил" />
+    <meta
+      property="og:description"
+      content="Кейсы, услуги и профессиональная статья с оформлением. Тексты, которые объясняют и продают."
+    />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1600&q=80" />
+
+    <style>
+      :root {
+        --bg: #0b0f1a;
+        --panel: rgba(255, 255, 255, 0.06);
+        --panel-2: rgba(255, 255, 255, 0.1);
+        --text: rgba(255, 255, 255, 0.9);
+        --muted: rgba(255, 255, 255, 0.68);
+        --soft: rgba(255, 255, 255, 0.14);
+        --border: rgba(255, 255, 255, 0.14);
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        --accent: #7c5cff;
+        --accent-2: #2fe4ab;
+        --warn: #ffcc66;
+        --radius: 18px;
+        --radius-2: 26px;
+        --max: 1120px;
+        --pad: 22px;
+        --pad-lg: 30px;
+        --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+          "Segoe UI Emoji";
+        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f6f7fb;
+          --panel: rgba(0, 0, 0, 0.04);
+          --panel-2: rgba(0, 0, 0, 0.06);
+          --text: rgba(6, 10, 20, 0.92);
+          --muted: rgba(6, 10, 20, 0.66);
+          --soft: rgba(6, 10, 20, 0.14);
+          --border: rgba(6, 10, 20, 0.14);
+          --shadow: 0 18px 60px rgba(15, 22, 40, 0.14);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font);
+        color: var(--text);
+        background: radial-gradient(1200px 800px at 20% 0%, rgba(124, 92, 255, 0.25), transparent 60%),
+          radial-gradient(1000px 700px at 100% 0%, rgba(47, 228, 171, 0.18), transparent 55%),
+          radial-gradient(800px 600px at 60% 120%, rgba(255, 204, 102, 0.12), transparent 55%), var(--bg);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid color-mix(in srgb, var(--accent), white 22%);
+        outline-offset: 3px;
+        border-radius: 10px;
+      }
+
+      .container {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 var(--pad);
+      }
+
+      .top {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(14px);
+        background: color-mix(in srgb, var(--bg), transparent 35%);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .top-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 220px;
+      }
+
+      .badge {
+        width: 34px;
+        height: 34px;
+        border-radius: 12px;
+        background: linear-gradient(140deg, var(--accent), var(--accent-2));
+        box-shadow: 0 12px 30px rgba(124, 92, 255, 0.28);
+      }
+
+      .brand strong {
+        font-weight: 700;
+        letter-spacing: 0.2px;
+      }
+
+      .brand span {
+        display: block;
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+
+      nav {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      nav a {
+        font-size: 14px;
+        color: var(--muted);
+        padding: 8px 10px;
+        border-radius: 12px;
+        transition: background 140ms ease, color 140ms ease;
+      }
+
+      nav a:hover {
+        background: var(--panel);
+        color: var(--text);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-weight: 650;
+        padding: 11px 14px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--panel);
+        color: var(--text);
+        cursor: pointer;
+        transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+        user-select: none;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        background: color-mix(in srgb, var(--panel), white 6%);
+        border-color: color-mix(in srgb, var(--border), white 10%);
+      }
+
+      .btn-primary {
+        border-color: color-mix(in srgb, var(--accent), white 18%);
+        background: linear-gradient(135deg, color-mix(in srgb, var(--accent), white 6%), var(--accent));
+        box-shadow: 0 18px 40px rgba(124, 92, 255, 0.22);
+      }
+
+      .btn-primary:hover {
+        background: linear-gradient(135deg, color-mix(in srgb, var(--accent), white 14%), var(--accent));
+      }
+
+      .hero {
+        padding: 58px 0 28px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 26px;
+        align-items: stretch;
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .card {
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, color-mix(in srgb, var(--panel), transparent 6%), transparent);
+        border-radius: var(--radius-2);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .hero-main {
+        padding: var(--pad-lg);
+        position: relative;
+      }
+
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        color: var(--muted);
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: linear-gradient(120deg, var(--accent), var(--accent-2));
+        box-shadow: 0 0 0 6px rgba(124, 92, 255, 0.12);
+      }
+
+      h1 {
+        font-size: clamp(34px, 4vw, 52px);
+        line-height: 1.08;
+        margin: 16px 0 12px;
+        letter-spacing: -0.6px;
+      }
+
+      .lead {
+        font-size: 17px;
+        color: var(--muted);
+        margin: 0;
+        max-width: 62ch;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+
+      .meta {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        padding-top: 18px;
+        border-top: 1px solid var(--border);
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .pill b {
+        color: var(--text);
+        font-weight: 650;
+      }
+
+      .hero-side {
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .photo {
+        position: relative;
+        min-height: 260px;
+        background-image: linear-gradient(135deg, rgba(124, 92, 255, 0.26), rgba(47, 228, 171, 0.12)),
+          url("https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=1400&q=80");
+        background-size: cover;
+        background-position: center;
+        border-radius: var(--radius-2);
+        border: 1px solid var(--border);
+        overflow: hidden;
+      }
+
+      .photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.55));
+      }
+
+      .photo-caption {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        z-index: 1;
+        display: grid;
+        gap: 6px;
+      }
+
+      .photo-caption strong {
+        font-size: 14px;
+        letter-spacing: 0.2px;
+      }
+
+      .photo-caption span {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      .side-card {
+        margin-top: 14px;
+        padding: 18px;
+        border-radius: var(--radius-2);
+        border: 1px solid var(--border);
+        background: var(--panel);
+      }
+
+      .side-card h3 {
+        margin: 0 0 10px;
+        font-size: 15px;
+        letter-spacing: 0.2px;
+      }
+
+      .side-card ul {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+        display: grid;
+        gap: 8px;
+      }
+
+      section {
+        padding: 34px 0;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 16px;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 22px;
+        letter-spacing: -0.2px;
+      }
+
+      .sub {
+        margin: 0;
+        color: var(--muted);
+        max-width: 70ch;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      @media (max-width: 980px) {
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .item {
+        padding: 18px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background: var(--panel);
+      }
+
+      .item h3 {
+        margin: 0 0 8px;
+        font-size: 16px;
+        letter-spacing: -0.1px;
+      }
+
+      .item p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .case {
+        padding: 18px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, var(--panel), transparent);
+      }
+
+      .case-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 14px;
+        margin-bottom: 10px;
+      }
+
+      .case h3 {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      .tag {
+        font-size: 12px;
+        color: var(--muted);
+        border: 1px solid var(--border);
+        background: color-mix(in srgb, var(--panel), transparent 15%);
+        padding: 6px 10px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .stat {
+        padding: 12px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: color-mix(in srgb, var(--panel), transparent 12%);
+      }
+
+      .stat b {
+        display: block;
+        font-size: 16px;
+        letter-spacing: -0.2px;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .article-wrap {
+        padding: 22px;
+        border-radius: var(--radius-2);
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, var(--panel), transparent);
+      }
+
+      .article-head {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .article-head .row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .chip {
+        font-size: 12px;
+        color: var(--muted);
+        border: 1px solid var(--border);
+        background: var(--panel);
+        padding: 6px 10px;
+        border-radius: 999px;
+      }
+
+      .article-cover {
+        margin: 18px 0;
+        border-radius: var(--radius-2);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        background: var(--panel);
+      }
+
+      .article-cover img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .article {
+        max-width: 78ch;
+      }
+
+      .article h3 {
+        margin: 26px 0 10px;
+        font-size: 18px;
+      }
+
+      .article p {
+        margin: 10px 0;
+        color: var(--muted);
+      }
+
+      .article ul {
+        color: var(--muted);
+        margin: 10px 0;
+        padding-left: 20px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .callout {
+        margin: 18px 0;
+        padding: 16px;
+        border-radius: var(--radius);
+        border: 1px solid color-mix(in srgb, var(--accent), white 18%);
+        background: linear-gradient(135deg, rgba(124, 92, 255, 0.16), rgba(47, 228, 171, 0.08));
+        color: color-mix(in srgb, var(--text), white 4%);
+      }
+
+      .callout b {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .quote {
+        margin: 18px 0;
+        padding: 18px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background: color-mix(in srgb, var(--panel), transparent 10%);
+      }
+
+      .quote p {
+        margin: 0;
+        color: var(--text);
+        font-size: 15px;
+      }
+
+      .quote span {
+        display: block;
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .contact {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 14px;
+      }
+
+      @media (max-width: 980px) {
+        .contact {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .formlike {
+        padding: 20px;
+        border-radius: var(--radius-2);
+        border: 1px solid var(--border);
+        background: var(--panel);
+      }
+
+      .formlike h3 {
+        margin: 0 0 8px;
+      }
+
+      .formlike p {
+        margin: 0 0 14px;
+        color: var(--muted);
+      }
+
+      .links {
+        display: grid;
+        gap: 10px;
+      }
+
+      .link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: color-mix(in srgb, var(--panel), transparent 8%);
+        color: var(--muted);
+      }
+
+      .link b {
+        color: var(--text);
+        font-weight: 650;
+      }
+
+      .footer {
+        padding: 26px 0 34px;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .small {
+        font-size: 13px;
+      }
+
+      .kbd {
+        font-family: var(--mono);
+        font-size: 12px;
+        padding: 2px 8px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--muted);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          scroll-behavior: auto !important;
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="top">
+      <div class="container">
+        <div class="top-inner">
+          <a class="brand" href="#top" aria-label="На главную">
+            <span class="badge" aria-hidden="true"></span>
+            <span>
+              <strong>Щепин Михаил</strong>
+              <span>Копирайтер · статьи · лендинги · email</span>
+            </span>
+          </a>
+          <nav aria-label="Навигация по странице">
+            <a href="#services">Услуги</a>
+            <a href="#cases">Кейсы</a>
+            <a href="#article">Статья</a>
+            <a href="#contact">Контакты</a>
+            <a class="btn btn-primary" href="#contact">Заказать текст</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="top" class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="card hero-main">
+            <div class="kicker"><span class="dot" aria-hidden="true"></span>Тексты, которые объясняют и продают</div>
+            <h1>Копирайтинг для бизнеса: смысл, структура, тон</h1>
+            <p class="lead">
+              Пишу лендинги, статьи и серии писем так, чтобы читателю было понятно, зачем продукт нужен, а бизнесу — выгодно
+              это объяснять. Внизу — кейсы и большая статья как образец стиля.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#article">Читать статью</a>
+              <a class="btn" href="#cases">Смотреть кейсы</a>
+              <a class="btn" href="#contact">Написать мне</a>
+            </div>
+
+            <div class="meta" aria-label="Ключевые факты">
+              <div class="pill"><b>Форматы</b> лендинг · блог · email · сценарии</div>
+              <div class="pill"><b>Сильные стороны</b> структура · UX‑тексты · tone of voice</div>
+              <div class="pill"><b>Подход</b> бриф → прототип → правки → публикация</div>
+            </div>
+          </div>
+
+          <div class="hero-side">
+            <div class="photo" role="img" aria-label="Рабочее место автора: ноутбук и блокнот">
+              <div class="photo-caption">
+                <strong>Копирайтинг для бизнеса</strong>
+                <span>Лендинги · статьи · email‑серии</span>
+              </div>
+            </div>
+            <div class="side-card">
+              <h3>Темы, в которых я силён</h3>
+              <ul>
+                <li>«Как писать лендинг, который не звучит как реклама»</li>
+                <li>«Tone of voice бренда: методика за 60 минут»</li>
+                <li>«Email‑серии: прогрев без спама и давления»</li>
+                <li>«Редактура в 7 шагов: от черновика до публикации»</li>
+                <li>«Тексты для IT‑продуктов: объяснять сложное простым»</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Услуги</h2>
+            <p class="sub">
+              Беру на себя смысловую работу: позиционирование, структура, заголовки, прототипирование, редактура, адаптация
+              под целевую аудиторию.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-3" role="list">
+          <div class="item" role="listitem">
+            <h3>Лендинги и страницы продукта</h3>
+            <p>Прототип, оффер, блоки доверия, преимущества, ответы на возражения, призывы к действию.</p>
+          </div>
+          <div class="item" role="listitem">
+            <h3>Статьи и экспертный блог</h3>
+            <p>Материалы под SEO и под бренд: фактчекинг, интервью, сценарий чтения, визуальная подача.</p>
+          </div>
+          <div class="item" role="listitem">
+            <h3>Email‑коммуникации</h3>
+            <p>Welcome‑цепочки, прогрев, реактивация, рассылки: без «крика», с пользой и понятными шагами.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Проекты</h2>
+            <p class="sub">Часть работ под NDA, поэтому показываю форматы и мой вклад без лишних деталей.</p>
+          </div>
+          <a class="btn" href="#contact">Запросить прайс</a>
+        </div>
+
+        <div class="grid-3">
+          <article class="case">
+            <div class="case-top">
+              <h3>SaaS‑лендинг: «понятно за 20 секунд»</h3>
+              <span class="tag">Лендинг</span>
+            </div>
+            <p class="sub">
+              Переписала оффер и первый экран, собрала структуру из 9 блоков, добавила FAQ и доказательства.
+            </p>
+            <div class="stats" aria-label="Ключевые параметры проекта">
+              <div class="stat"><b>9</b><span>блоков структуры</span></div>
+              <div class="stat"><b>FAQ</b><span>возражения и риски</span></div>
+              <div class="stat"><b>1</b><span>прототип экрана</span></div>
+            </div>
+          </article>
+
+          <article class="case">
+            <div class="case-top">
+              <h3>Серия писем: прогрев без давления</h3>
+              <span class="tag">Email</span>
+            </div>
+            <p class="sub">
+              7 писем: польза → кейсы → возражения → выбор тарифа. Сегментация по интересам и мягкий CTA.
+            </p>
+            <div class="stats" aria-label="Ключевые параметры проекта">
+              <div class="stat"><b>7</b><span>писем в цепочке</span></div>
+              <div class="stat"><b>2</b><span>сегмента аудитории</span></div>
+              <div class="stat"><b>CTA</b><span>мягкий следующий шаг</span></div>
+            </div>
+          </article>
+
+          <article class="case">
+            <div class="case-top">
+              <h3>Экспертная статья: доверие и лиды</h3>
+              <span class="tag">Контент</span>
+            </div>
+            <p class="sub">
+              Интервью с экспертом, сценарий чтения, примеры, чек‑лист. Верстка под сканирование.
+            </p>
+            <div class="stats" aria-label="Ключевые параметры проекта">
+              <div class="stat"><b>1</b><span>интервью</span></div>
+              <div class="stat"><b>1</b><span>чек‑лист</span></div>
+              <div class="stat"><b>UX</b><span>верстка под скан</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="article">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Профессиональная статья (образец)</h2>
+            <p class="sub">
+              Тема выбрана так, чтобы показать сильные стороны копирайтера: структура, ясность, работа с возражениями и
+              полезность.
+            </p>
+          </div>
+          <a class="btn" href="#contact">Нужен текст под ваш продукт</a>
+        </div>
+
+        <div class="article-wrap">
+          <div class="article-head">
+            <div class="row">
+              <span class="chip">Длина: ~8–10 минут</span>
+              <span class="chip">Формат: гайд</span>
+              <span class="chip">Подходит: услуги · IT · онлайн‑продукты</span>
+            </div>
+            <h3 style="margin: 0; font-size: 20px">Как написать лендинг, который не звучит как реклама</h3>
+            <p class="sub" style="margin: 0">
+              Люди не читают лендинг, чтобы «вдохновиться брендом». Они хотят быстро понять: что это, кому подходит, чем
+              лучше альтернатив и что делать дальше. В этом гайде — методика, которая превращает «красивые слова» в
+              понятное решение.
+            </p>
+          </div>
+
+          <div class="article-cover">
+            <img
+              src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=2000&q=80"
+              alt="Руки на клавиатуре и чашка кофе на столе"
+              loading="lazy"
+            />
+          </div>
+
+          <article class="article">
+            <div class="callout">
+              <b>Сразу про ожидания</b>
+              Этот текст — не про «волшебные заголовки». Он про логику: как собрать структуру, где читателю легко
+              согласиться, и как писать так, чтобы доверие росло на каждом экране.
+            </div>
+
+            <h3>1) Начинаем не с текста, а с вопроса «почему сейчас?»</h3>
+            <p>
+              Читатель приходит на лендинг с контекстом: проблема уже болит, или задача уже «горит». Ваша цель — попасть в
+              этот момент точной формулировкой, а не общими словами вроде «команда профессионалов» и «лучшее качество».
+            </p>
+            <ul>
+              <li><b>Триггер:</b> что произошло в жизни/бизнесе, что человек вообще ищет решение?</li>
+              <li><b>Риск без решения:</b> что будет, если ничего не менять (потери, стресс, упущенная выгода)?</li>
+              <li><b>Ожидаемый результат:</b> как выглядит «хорошо» через 2 недели/1 месяц/квартал?</li>
+            </ul>
+            <p>
+              В итоге первый экран отвечает не «кто вы», а «что вы даёте в понятных терминах» и «почему вам можно
+              поверить».
+            </p>
+
+            <h3>2) Сначала — ясность, потом — красота</h3>
+            <p>
+              Копирайтинг на лендинге работает как интерфейс: читатель «кликает глазами». Поэтому дизайн и текст должны
+              помогать сканированию: короткие абзацы, смысловые подзаголовки, списки, выделения.
+            </p>
+            <div class="quote">
+              <p>«Если текст нельзя быстро просканировать — он как кнопка без подписи: вроде есть, но не работает».</p>
+              <span>Принцип UX‑копирайтинга</span>
+            </div>
+
+            <h3>3) Скелет лендинга: 9 блоков, которые закрывают большинство задач</h3>
+            <p>
+              Универсальной «единственно правильной» структуры нет. Но есть набор блоков, который стабильно помогает
+              объяснять и продавать без давления:
+            </p>
+            <ul>
+              <li><b>Первый экран:</b> результат + для кого + подтверждение (факт/цифра/клиенты).</li>
+              <li><b>Проблема:</b> что мешает сейчас и почему привычные способы не помогают.</li>
+              <li><b>Решение:</b> что именно вы делаете и как это выглядит в процессе.</li>
+              <li><b>Преимущества:</b> 3–5 пунктов, каждый с расшифровкой «что это даёт».</li>
+              <li><b>Как работает:</b> шаги/этапы/сроки — снимают тревогу и вопросы.</li>
+              <li><b>Доверие:</b> кейсы, отзывы, экспертиза, демонстрация продукта.</li>
+              <li><b>Тарифы/пакеты:</b> выбор без перегруза, подсказки «кому что».</li>
+              <li><b>FAQ:</b> возражения, риски, гарантии, условия.</li>
+              <li><b>Финальный CTA:</b> повторяем оффер и предлагаем следующий шаг.</li>
+            </ul>
+
+            <h3>4) Пишем преимущества так, чтобы им верили</h3>
+            <p>
+              «Быстро», «качественно», «индивидуально» — это не преимущества, а намерения. Преимущество начинается там,
+              где появляется причина верить.
+            </p>
+            <ul>
+              <li><b>Формула:</b> преимущество → как достигается → что получает клиент.</li>
+              <li><b>Пример:</b> «Запуск за 10 дней» → «работаем по прототипу и чек‑листам» → «без хаоса и бесконечных правок».</li>
+              <li><b>Антипример:</b> «Мы надежные» — без фактов и без результата.</li>
+            </ul>
+
+            <h3>5) Возражения — это не «негатив», а честные вопросы</h3>
+            <p>
+              Хороший лендинг не спорит с читателем и не давит. Он помогает разобраться: «подойдет ли мне» и «что будет
+              дальше». Возражения обычно про риск, время, цену и доверие.
+            </p>
+            <div class="callout">
+              <b>Мини‑шпаргалка для FAQ</b>
+              Что, если не подойдет? · Сколько времени займет? · Что входит/не входит? · Как вы измеряете результат? ·
+              Что нужно от меня?
+            </div>
+
+            <h3>6) Тональность: пишем как человек, но не «по‑домашнему»</h3>
+            <p>
+              Профессиональный тон — это сочетание простоты и уважения. Не сюсюкать, не давить, не «впаривать». Вместо
+              этого — ясные формулировки, конкретика, забота о времени читателя.
+            </p>
+            <ul>
+              <li>Глаголы вместо абстракций: «покажем», «соберем», «обсудим», «передадим».</li>
+              <li>Проверяем каждое обещание: можно ли его подтвердить фактом или механизмом.</li>
+              <li>Убираем лишнее: если предложение не помогает понять/выбрать — оно шум.</li>
+            </ul>
+
+            <h3>7) Чек‑лист перед публикацией</h3>
+            <ul>
+              <li>Первый экран отвечает: что это, для кого, какой результат, почему можно верить.</li>
+              <li>Структура ведет читателя логично: проблема → решение → доказательства → следующий шаг.</li>
+              <li>Каждый блок легко сканируется за 5–8 секунд.</li>
+              <li>В CTA есть «мягкий» следующий шаг (консультация, демо, расчет) и понятное действие.</li>
+              <li>Есть ответы на вопросы про сроки, цену, риски и формат сотрудничества.</li>
+            </ul>
+
+            <div class="quote">
+              <p>
+                Итог: лендинг перестает быть «красивой витриной», когда вы строите его как разговор — с ясностью, фактами
+                и уважением к читателю.
+              </p>
+              <span>Если хотите — адаптирую эту структуру под ваш продукт и соберу прототип.</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Контакты</h2>
+            <p class="sub">
+              Чтобы стартовать, достаточно короткого сообщения. Я уточню максимум 1–2 вопроса и предложу план работ.
+              Подробно рассказывать про опыт не нужно — важнее задача и исходные материалы.
+            </p>
+          </div>
+        </div>
+
+        <div class="contact">
+          <div class="formlike">
+            <h3>Связаться со мной</h3>
+            <p class="small">Лучший канал — Telegram. Отвечаю в удобное время и быстро уточняю детали.</p>
+            <div id="brief" hidden>
+              <p class="small">Скопируйте и заполните 5 пунктов — этого обычно хватает, чтобы начать без лишних созвонов:</p>
+              <ul style="margin: 0 0 14px; padding-left: 20px; color: var(--muted); display: grid; gap: 8px">
+                <li><b>Что за продукт/услуга:</b> 1–2 предложения.</li>
+                <li><b>Цель:</b> заявки / покупки / подписки / регистрация / другое.</li>
+                <li><b>Аудитория:</b> кто покупает и почему сейчас.</li>
+                <li><b>Формат:</b> лендинг / статья / серия писем / другое + пример (если есть).</li>
+                <li><b>Срок:</b> когда нужно готовое.</li>
+              </ul>
+            </div>
+            <div class="links">
+              <a class="link" href="mailto:zerefdparhnjl@gmail.com"><b>Email</b><span>zerefdparhnjl@gmail.com</span></a>
+              <a class="link" href="https://t.me/Avannee" target="_blank" rel="noreferrer"><b>Telegram</b><span>@Avannee</span></a>
+            </div>
+          </div>
+
+          <div class="card hero-main" style="box-shadow: none">
+            <div class="kicker"><span class="dot" aria-hidden="true"></span>Минимум вопросов</div>
+            <h3 style="margin: 14px 0 10px; font-size: 18px">Как я веду задачу</h3>
+            <p class="sub" style="margin: 0">
+              Сначала делаю структуру и смысл (прототип/план), затем пишу текст, после — правки и финальная версия под
+              публикацию. Так вы видите прогресс и не тратите время на «рассказы о себе».
+            </p>
+            <div class="callout" style="margin-top: 14px">
+              <b>Частый вопрос: «а какой у вас опыт?»</b>
+              Отвечаю делом: начинаем с небольшого фрагмента (первый экран/план статьи). Если подход подходит — расширяем
+              до полного объема.
+            </div>
+            <div class="hero-actions" style="margin-top: 14px">
+              <a class="btn btn-primary" href="https://t.me/Avannee" target="_blank" rel="noreferrer">Написать в Telegram</a>
+              <a class="btn" href="mailto:zerefdparhnjl@gmail.com">Написать на Email</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <span class="small">© <span id="y"></span> Щепин Михаил.</span>
+          <span class="small">Фото: Unsplash · Шрифты: системные</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
